@@ -1,64 +1,57 @@
 
-<html><head><base href="https://monteirodv.github.io/"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Daniel Monteiro's Portfolio</title><style>
+<html><head><base href="https://monteirodv.github.io/"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Daniel M - Desenvolvedor & Entusiasta de IA</title><style>
     :root {
-        --bg-color: #121212;
-        --card-bg: #1E1E1E;
-        --text-color: #E0E0E0;
-        --accent-color: #BB86FC;
-        --secondary-accent: #03DAC6;
+        --bg-color: #000000;
+        --text-color: #00ff00;
+        --accent-color: #00ff00;
+        --secondary-color: #004400;
+        --card-bg: #001100;
     }
-    body {
-        font-family: 'Inter', sans-serif;
+    body, html {
+        font-family: 'Courier New', monospace;
         line-height: 1.6;
         color: var(--text-color);
         margin: 0;
         padding: 0;
         background-color: var(--bg-color);
-        transition: background-color 0.3s ease;
+        overflow-x: hidden;
     }
     .container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
     header {
         text-align: center;
-        margin-bottom: 40px;
-        padding: 40px 0;
-        background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
-        color: var(--bg-color);
-        border-radius: 0 0 20px 20px;
+        padding: 30px 0;
+        border-bottom: 2px solid var(--accent-color);
     }
     h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-bottom: 10px;
+        text-shadow: 0 0 5px var(--accent-color);
     }
     .project-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 30px;
+        margin-top: 30px;
+        flex-grow: 1;
     }
     .project {
         background-color: var(--card-bg);
-        border-radius: 15px;
-        padding: 25px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-    .project::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--accent-color), var(--secondary-accent));
+        border: 2px solid var(--accent-color);
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 0 10px var(--accent-color);
+        transition: all 0.3s ease;
     }
     .project:hover {
+        box-shadow: 0 0 20px var(--accent-color);
         transform: translateY(-5px);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
     .project h2 {
         color: var(--accent-color);
@@ -67,6 +60,7 @@
     }
     .project p {
         margin-bottom: 20px;
+        font-size: 1rem;
     }
     .project a {
         display: inline-block;
@@ -75,37 +69,18 @@
         text-decoration: none;
         font-weight: bold;
         padding: 10px 20px;
-        border-radius: 25px;
-        transition: background-color 0.3s ease, transform 0.3s ease;
+        border-radius: 5px;
+        transition: all 0.3s ease;
     }
     .project a:hover {
-        background-color: var(--secondary-accent);
-        transform: scale(1.05);
+        background-color: var(--secondary-color);
+        color: var(--accent-color);
     }
     footer {
         text-align: center;
-        margin-top: 60px;
+        margin-top: 30px;
         padding: 20px;
-        background-color: var(--card-bg);
-        color: var(--text-color);
-        border-radius: 20px 20px 0 0;
-    }
-    .language-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background-color: var(--accent-color);
-        color: var(--bg-color);
-        border: none;
-        padding: 10px 20px;
-        border-radius: 25px;
-        cursor: pointer;
-        z-index: 1000;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-    .language-toggle:hover {
-        background-color: var(--secondary-accent);
-        transform: scale(1.05);
+        border-top: 2px solid var(--accent-color);
     }
     .features {
         list-style-type: none;
@@ -114,348 +89,272 @@
     .features li {
         margin-bottom: 10px;
         position: relative;
-        padding-left: 25px;
+        padding-left: 20px;
+        font-size: 0.9rem;
     }
     .features li::before {
-        content: '➤';
+        content: '>';
         position: absolute;
         left: 0;
-        color: var(--secondary-accent);
+        color: var(--accent-color);
     }
     .tech-stack {
-        background-color: rgba(255,255,255,0.05);
+        background-color: var(--secondary-color);
         padding: 15px;
-        border-radius: 10px;
+        border-radius: 5px;
         margin-top: 20px;
     }
     .tech-stack h3 {
         margin-top: 0;
-        color: var(--secondary-accent);
+        color: var(--accent-color);
+        font-size: 1.2rem;
+    }
+    #terminal {
+        background-color: var(--card-bg);
+        border: 2px solid var(--accent-color);
+        border-radius: 5px;
+        padding: 20px;
+        margin-top: 30px;
+        font-family: 'Courier New', monospace;
+        color: var(--text-color);
+        overflow: hidden;
+    }
+    #terminal-output {
+        height: 200px;
+        overflow-y: auto;
+        margin-bottom: 10px;
+    }
+    #terminal-input {
+        display: flex;
+        align-items: center;
+    }
+    #terminal-input span {
+        color: var(--accent-color);
+        margin-right: 5px;
+    }
+    #terminal-input input {
+        background-color: transparent;
+        border: none;
+        color: var(--text-color);
+        font-family: inherit;
+        font-size: inherit;
+        width: 100%;
+        outline: none;
     }
     @media (max-width: 768px) {
         .container {
             padding: 15px;
         }
         .project {
-            padding: 20px;
-        }
-        .language-toggle {
-            padding: 8px 15px;
+            padding: 15px;
         }
     }
-    /* Animation keyframes */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    #matrix-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
     }
-    .fade-in-up {
-        animation: fadeInUp 0.6s ease-out forwards;
-    }
-</style><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></head><body>
-    <button class="language-toggle" onclick="toggleLanguage()">English</button>
-
+</style></head><body>
+    <canvas id="matrix-bg"></canvas>
     <div class="container">
-        <header class="fade-in-up">
-            <h1>Daniel Monteiro's Portfolio</h1>
-            <p>Bem-vindo ao meu portfólio!</p>
+        <header>
+            <h1>Daniel M</h1>
+            <p>Desenvolvedor | Entusiasta de IA</p>
         </header>
 
         <main class="project-grid">
-            <div class="project fade-in-up" style="animation-delay: 0.1s;">
+            <div class="project">
                 <h2>Dark Weather Web</h2>
-                <p>Uma aplicação web elegante e amigável que fornece informações meteorológicas em tempo real e previsões com um toque de humor usando IA. Construída com HTML, CSS e JavaScript, oferece uma interface com tema escuro para visualização confortável em qualquer condição de iluminação.</p>
-                <h3>Características:</h3>
+                <p>Aplicativo de previsão do tempo com interface elegante e toques de humor usando IA.</p>
                 <ul class="features">
-                    <li>Dados Meteorológicos em Tempo Real: Obtenha informações meteorológicas atualizadas para qualquer cidade do mundo.</li>
-                    <li>Previsão de 5 Dias: Planeje com antecedência com uma previsão do tempo para 5 dias.</li>
-                    <li>Suporte à Geolocalização: Obtenha automaticamente dados meteorológicos para a localização atual do usuário.</li>
-                    <li>Multilíngue: Alterne facilmente entre inglês e português.</li>
-                    <li>Frases Meteorológicas Divertidas: Desfrute de tiradas bem-humoradas sobre o tempo em sua localização escolhida, alimentadas pelo Gemini.</li>
-                    <li>Design Responsivo: Ótima aparência tanto em dispositivos desktop quanto móveis.</li>
-                    <li>Tema Escuro: Suave para os olhos, perfeito para notívagos e ambientes com pouca luz.</li>
-                </ul>
-                <a href="https://monteirodv.github.io/DarkWeatherWeb/" target="_blank">Acessar o Website</a>
-            </div>
-
-            <div class="project fade-in-up" style="animation-delay: 0.2s;">
-                <h2>MineMatic</h2>
-                <p>MineMatic é um jogo de aventura de mineração responsivo e envolvente, onde os jogadores podem cavar em busca de minérios, melhorar suas ferramentas e descobrir tesouros raros!</p>
-                <h3>Características:</h3>
-                <ul class="features">
-                    <li>Mine vários minérios: pedra, ferro, ouro e diamantes</li>
-                    <li>Melhore suas ferramentas e equipamentos de mineração</li>
-                    <li>Contrate mineiros e implante brocas de mineração</li>
-                    <li>Pesquise novas tecnologias para aumentar a eficiência</li>
-                    <li>Desbloqueie conquistas à medida que progride</li>
-                    <li>Sistema de prestígio para jogabilidade de longo prazo</li>
+                    <li>Dados meteorológicos em tempo real</li>
+                    <li>Previsão para 5 dias</li>
+                    <li>Suporte à geolocalização</li>
+                    <li>Frases bem-humoradas sobre o clima (powered by Gemini)</li>
                     <li>Design responsivo para desktop e mobile</li>
+                    <li>Tema escuro para conforto visual</li>
                 </ul>
-                <a href="https://monteirodv.github.io/MineMatic/" target="_blank">Acessar o Website</a>
+                <div class="tech-stack">
+                    <h3>Tecnologias:</h3>
+                    <p>HTML, CSS, JavaScript, APIs de previsão do tempo, Gemini AI</p>
+                </div>
+                <a href="https://monteirodv.github.io/DarkWeatherWeb/" target="_blank">Acessar Site</a>
             </div>
 
-            <div class="project fade-in-up" style="animation-delay: 0.3s;">
+            <div class="project">
+                <h2>MineMatic</h2>
+                <p>Jogo idle de aventura de mineração responsivo e envolvente.</p>
+                <ul class="features">
+                    <li>Mineração de vários minérios</li>
+                    <li>Sistema de upgrade de ferramentas</li>
+                    <li>Contratação de mineiros e implantação de brocas</li>
+                    <li>Pesquisa de novas tecnologias</li>
+                    <li>Sistema de conquistas e prestígio</li>
+                </ul>
+                <div class="tech-stack">
+                    <h3>Tecnologias:</h3>
+                    <p>HTML5, CSS3, JavaScript, Local Storage</p>
+                </div>
+                <a href="https://monteirodv.github.io/MineMatic/" target="_blank">Jogar Agora</a>
+            </div>
+
+            <div class="project">
                 <h2>Pong AI</h2>
-                <p>Este projeto é uma versão aprimorada do clássico jogo Pong, apresentando um jogador contra um oponente de IA. A IA usa técnicas de aprendizado por reforço para melhorar sua jogabilidade ao longo do tempo. O jogo inclui visualizações em tempo real do processo de treinamento da IA, tornando-o tanto divertido quanto educativo.</p>
-                <h3>Funcionalidades:</h3>
+                <p>Versão aprimorada do clássico Pong com um oponente de IA que aprende.</p>
                 <ul class="features">
                     <li>Jogabilidade clássica do Pong</li>
                     <li>Oponente de IA usando Q-learning</li>
                     <li>Visualização em tempo real das métricas de treinamento da IA</li>
-                    <li>Design responsivo para desktop e dispositivos móveis</li>
-                    <li>Alternância de idioma entre inglês e português</li>
+                    <li>Design responsivo</li>
                 </ul>
                 <div class="tech-stack">
-                    <h3>Tecnologias Utilizadas:</h3>
-                    <ul>
-                        <li>HTML5 Canvas para renderização do jogo</li>
-                        <li>JavaScript para lógica do jogo e IA</li>
-                        <li>Chart.js para visualização de dados</li>
-                        <li>CSS responsivo para compatibilidade entre dispositivos</li>
-                    </ul>
+                    <h3>Tecnologias:</h3>
+                    <p>HTML5 Canvas, JavaScript, Chart.js, CSS responsivo</p>
                 </div>
-                <a href="https://monteirodv.github.io/PongAI/" target="_blank">Acessar o Website</a>
+                <a href="https://monteirodv.github.io/PongAI/" target="_blank">Jogar vs IA</a>
             </div>
 
-            <div class="project fade-in-up" style="animation-delay: 0.4s;">
+            <div class="project">
                 <h2>MiniMax Alpha Checkers</h2>
-                <p>Bem-vindo ao Damas Clássico, onde o jogo tradicional encontra a IA de ponta! Desafie-se contra um oponente que usa algoritmos avançados para superar você a cada jogada.</p>
-                <h3>Características:</h3>
+                <p>Jogo de Damas com IA avançada usando algoritmos Minimax e poda Alfa-beta.</p>
                 <ul class="features">
-                    <li>Jogue contra uma IA usando Minimax com poda alfa-beta</li>
-                    <li>Suporte bilíngue (Inglês e Português)</li>
-                    <li>Visualização em tempo real da tomada de decisão da IA</li>
-                    <li>Tabuleiro de jogo intuitivo e interativo</li>
-                    <li>Design responsivo para todos os dispositivos</li>
-                </ul>
-                <h3>Como Jogar:</h3>
-                <ol>
-                    <li>Clique em "Novo Jogo" para iniciar seu desafio</li>
-                    <li>Selecione sua peça clicando nela</li>
-                    <li>Mova para um quadrado válido com outro clique</li>
-                    <li>Observe enquanto a IA calcula sua jogada genial!</li>
-                </ol>
-                <h3>Visualização da IA:</h3>
-                <p>Espie a mente do seu oponente digital:</p>
-                <ul class="features">
-                    <li>Estatísticas da IA: Avaliação, profundidade de busca e contagem de nós em tempo real</li>
-                    <li>Árvore Minimax: Representação visual do processo de decisão da IA</li>
-                </ul>
-                <a href="https://monteirodv.github.io/MiniMaxAlphaCheckers/" target="_blank">Acessar o Website</a>
-            </div>
-
-            <div class="project fade-in-up" style="animation-delay: 0.5s;">
-                <h2>AI TV Picks</h2>
-                <p>🎬 Recomendações de Filmes e Séries com IA 🍿</p>
-                <p>🇬🇧 English | 🇧🇷 Português</p>
-                <p>Bem-vindo ao Aplicativo de Recomendações de Filmes e Séries com IA! Este projeto utiliza IA para fornecer sugestões personalizadas de filmes e séries de TV com base nas suas preferências.</p>
-                <h3>Funcionalidades:</h3>
-                <ul class="features">
-                    <li>Recomendações com IA: Receba sugestões personalizadas de filmes e séries.</li>
-                    <li>Design Elegante: UI moderna e responsiva com Tailwind CSS.</li>
-                    <li>Interatividade: Formulário de busca dinâmico com recomendações em tempo real.</li>
-                    <li>Apelo Visual: Emojis flutuantes e elementos animados para uma experiência divertida.</li>
+                    <li>IA desafiadora usando Minimax e poda Alfa-beta</li>
+                    <li>Visualização do processo de tomada de decisão da IA</li>
+                    <li>Interface de jogo interativa e intuitiva</li>
+                    <li>Diferentes níveis de dificuldade</li>
                 </ul>
                 <div class="tech-stack">
-                    <h3>Tecnologias Utilizadas:</h3>
-                    <ul>
-                        <li>HTML: Estrutura e layout.</li>
-                        <li>Tailwind CSS: Estilização e design responsivo.</li>
-                        <li>JavaScript: Funcionalidade interativa e integração com APIs.</li>
-                        <li>Google Gemini API: Geração de conteúdo baseada em IA.</li>
-                        <li>OMDb API: Recuperação de dados de filmes e séries.</li>
-                    </ul>
+                    <h3>Tecnologias:</h3>
+                    <p>HTML5, CSS3, JavaScript (lógica do jogo e implementação de IA)</p>
                 </div>
-                <a href="https://monteirodv.github.io/AiTVPicks/" target="_blank">Acessar o Website</a>
+                <a href="https://monteirodv.github.io/MiniMaxAlphaCheckers/" target="_blank">Desafiar a IA</a>
+            </div>
+
+            <div class="project">
+                <h2>AI TV Picks</h2>
+                <p>Aplicativo de recomendações de filmes e séries alimentado por IA.</p>
+                <ul class="features">
+                    <li>Recomendações personalizadas de filmes e séries</li>
+                    <li>Design elegante e responsivo com Tailwind CSS</li>
+                    <li>Formulário de busca dinâmico com recomendações em tempo real</li>
+                    <li>Elementos visuais animados para uma experiência envolvente</li>
+                </ul>
+                <div class="tech-stack">
+                    <h3>Tecnologias:</h3>
+                    <p>HTML, Tailwind CSS, JavaScript, Google Gemini API, OMDb API</p>
+                </div>
+                <a href="https://monteirodv.github.io/AiTVPicks/" target="_blank">Descobrir Recomendações</a>
             </div>
         </main>
+
+        <div id="terminal">
+            <div id="terminal-output"></div>
+            <div id="terminal-input">
+                <span>$</span>
+                <input type="text" id="command-input" placeholder="Digite um comando...">
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Daniel M. Todos os direitos reservados.</p>
+        </footer>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Daniel M. Todos os direitos reservados.</p>
-    </footer>
-
     <script>
-        let isPortuguese = true;
+        // Matrix rain effect
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
 
-        const translations = {
-            pt: {
-                title: "Portfólio de Daniel Monteiro",
-                welcome: "Bem-vindo ao meu portfólio!",
-                accessWebsite: "Acessar o Website",
-                darkWeatherDesc: "Uma aplicação web elegante e amigável que fornece informações meteorológicas em tempo real e previsões com um toque de humor usando IA. Construída com HTML, CSS e JavaScript, oferece uma interface com tema escuro para visualização confortável em qualquer condição de iluminação.",
-                darkWeatherFeature1: "Dados Meteorológicos em Tempo Real: Obtenha informações meteorológicas atualizadas para qualquer cidade do mundo.",
-                darkWeatherFeature2: "Previsão de 5 Dias: Planeje com antecedência com uma previsão do tempo para 5 dias.",
-                darkWeatherFeature3: "Suporte à Geolocalização: Obtenha automaticamente dados meteorológicos para a localização atual do usuário.",
-                darkWeatherFeature4: "Multilíngue: Alterne facilmente entre inglês e português.",
-                darkWeatherFeature5: "Frases Meteorológicas Divertidas: Desfrute de tiradas bem-humoradas sobre o tempo em sua localização escolhida, alimentadas pelo Gemini.",
-                darkWeatherFeature6: "Design Responsivo: Ótima aparência tanto em dispositivos desktop quanto móveis.",
-                darkWeatherFeature7: "Tema Escuro: Suave para os olhos, perfeito para notívagos e ambientes com pouca luz.",
-                minematicDesc: "MineMatic é um jogo de aventura de mineração responsivo e envolvente, onde os jogadores podem cavar em busca de minérios, melhorar suas ferramentas e descobrir tesouros raros!",
-                features: "Características:",
-                feature1: "Mine vários minérios: pedra, ferro, ouro e diamantes",
-                feature2: "Melhore suas ferramentas e equipamentos de mineração",
-                feature3: "Contrate mineiros e implante brocas de mineração",
-                feature4: "Pesquise novas tecnologias para aumentar a eficiência",
-                feature5: "Desbloqueie conquistas à medida que progride",
-                feature6: "Sistema de prestígio para jogabilidade de longo prazo",
-                feature7: "Design responsivo para desktop e mobile",
-                pongAiDesc: "Este projeto é uma versão aprimorada do clássico jogo Pong, apresentando um jogador contra um oponente de IA. A IA usa técnicas de aprendizado por reforço para melhorar sua jogabilidade ao longo do tempo. O jogo inclui visualizações em tempo real do processo de treinamento da IA, tornando-o tanto divertido quanto educativo.",
-                pongAiFeature1: "Jogabilidade clássica do Pong",
-                pongAiFeature2: "Oponente de IA usando Q-learning",
-                pongAiFeature3: "Visualização em tempo real das métricas de treinamento da IA",
-                pongAiFeature4: "Design responsivo para desktop e dispositivos móveis",
-                pongAiFeature5: "Alternância de idioma entre inglês e português",
-                techStack: "Tecnologias Utilizadas:",
-                checkersDesc: "Bem-vindo ao Damas Clássico, onde o jogo tradicional encontra a IA de ponta! Desafie-se contra um oponente que usa algoritmos avançados para superar você a cada jogada.",
-                checkersFeature1: "Jogue contra uma IA usando Minimax com poda alfa-beta",
-                checkersFeature2: "Suporte bilíngue (Inglês e Português)",
-                checkersFeature3: "Visualização em tempo real da tomada de decisão da IA",
-                checkersFeature4: "Tabuleiro de jogo intuitivo e interativo",
-                checkersFeature5: "Design responsivo para todos os dispositivos",
-                howToPlay: "Como Jogar:",
-                checkersHowTo1: "Clique em \"Novo Jogo\" para iniciar seu desafio",
-                checkersHowTo2: "Selecione sua peça clicando nela",
-                checkersHowTo3: "Mova para um quadrado válido com outro clique",
-                checkersHowTo4: "Observe enquanto a IA calcula sua jogada genial!",
-                aiVisualization: "Visualização da IA:",
-                aiVizDesc: "Espie a mente do seu oponente digital:",
-                aiVizFeature1: "Estatísticas da IA: Avaliação, profundidade de busca e contagem de nós em tempo real",
-                aiVizFeature2: "Árvore Minimax: Representação visual do processo de decisão da IA",
-                aiTvPicksDesc: "🎬 Recomendações de Filmes e Séries com IA 🍿\n\nBem-vindo ao Aplicativo de Recomendações de Filmes e Séries com IA! Este projeto utiliza IA para fornecer sugestões personalizadas de filmes e séries de TV com base nas suas preferências.",
-                aiTvPicksFeature1: "Recomendações com IA: Receba sugestões personalizadas de filmes e séries.",
-                aiTvPicksFeature2: "Design Elegante: UI moderna e responsiva com Tailwind CSS.",
-                aiTvPicksFeature3: "Interatividade: Formulário de busca dinâmico com recomendações em tempo real.",
-                aiTvPicksFeature4: "Apelo Visual: Emojis flutuantes e elementos animados para uma experiência divertida.",
-                footer: "Todos os direitos reservados.",
-                languageToggle: "English"
-            },
-            en: {
-                title: "Daniel Monteiro's Portfolio",
-                welcome: "Welcome to my portfolio! Here you'll find a collection of my innovative projects.",
-                accessWebsite: "Access Website",
-                darkWeatherDesc: "A sleek, user-friendly web application that provides real-time weather information and forecasts with a dash of wit using AI. Built with HTML, CSS, and JavaScript, it offers a dark-themed interface for comfortable viewing in any lighting condition.",
-                darkWeatherFeature1: "Real-time Weather Data: Get up-to-date weather information for any city worldwide.",
-                darkWeatherFeature2: "5-Day Forecast: Plan ahead with a 5-day weather forecast.",
-                darkWeatherFeature3: "Geolocation Support: Automatically fetch weather data for the user's current location.",
-                darkWeatherFeature4: "Multilingual: Switch between English and Portuguese with ease.",
-                darkWeatherFeature5: "Witty Weather Phrases: Enjoy humorous one-liners about the weather in your chosen location, powered by Gemini.",
-                darkWeatherFeature6: "Responsive Design: Looks great on both desktop and mobile devices.",
-                darkWeatherFeature7: "Dark Theme: Easy on the eyes, perfect for night owls and low-light environments.",
-                minematicDesc: "MineMatic is an engaging, responsive mining adventure game where players can dig for ores, upgrade their tools, and uncover rare treasures!",
-                features: "Features:",
-                feature1: "Mine various ores: stone, iron, gold, and diamonds",
-                feature2: "Upgrade your mining tools and equipment",
-                feature3: "Hire miners and deploy mining drills",
-                feature4: "Research new technologies to boost efficiency",
-                feature5: "Unlock achievements as you progress",
-                feature6: "Prestige system for long-term gameplay",
-                feature7: "Responsive design for desktop and mobile",
-                pongAiDesc: "This project is an enhanced version of the classic Pong game, featuring a player versus an AI opponent. The AI uses reinforcement learning techniques to improve its gameplay over time. The game includes real-time visualizations of the AI training process, making it both fun and educational.",
-                pongAiFeature1: "Classic Pong gameplay",
-                pongAiFeature2: "AI opponent using Q-learning",
-                pongAiFeature3: "Real-time visualization of AI training metrics",
-                pongAiFeature4: "Responsive design for desktop and mobile devices",
-                pongAiFeature5: "Language toggle between English and Portuguese",
-                techStack: "Technologies Used:",
-                checkersDesc: "Welcome to Classic Checkers, where traditional gameplay meets cutting-edge AI! Challenge yourself against an opponent that uses advanced algorithms to outmaneuver you at every turn.",
-                checkersFeature1: "Play against an AI using Minimax with alpha-beta pruning",
-                checkersFeature2: "Bilingual support (English and Portuguese)",
-                checkersFeature3: "Real-time visualization of AI decision-making",
-                checkersFeature4: "Intuitive and interactive game board",
-                checkersFeature5: "Responsive design for all devices",
-                howToPlay: "How to Play:",
-                checkersHowTo1: "Click \"New Game\" to start your challenge",
-                checkersHowTo2: "Select your piece by clicking on it",
-                checkersHowTo3: "Move to a valid square with another click",
-                checkersHowTo4: "Watch as the AI calculates its brilliant move!",
-                aiVisualization: "AI Visualization:",
-                aiVizDesc: "Peek into the mind of your digital opponent:",
-                aiVizFeature1: "AI Statistics: Real-time evaluation, search depth, and node count",
-                aiVizFeature2: "Minimax Tree: Visual representation of the AI's decision process",
-                aiTvPicksDesc: "🎬 AI-Powered Movie and TV Show Recommendations 🍿\n\nWelcome to the AI Movie and TV Show Recommendation App! This project uses AI to provide personalized suggestions for movies and TV shows based on your preferences.",
-                aiTvPicksFeature1: "AI Recommendations: Receive personalized suggestions for movies and TV shows.",
-                aiTvPicksFeature2: "Elegant Design: Modern and responsive UI with Tailwind CSS.",
-                aiTvPicksFeature3: "Interactivity: Dynamic search form with real-time recommendations.",
-                aiTvPicksFeature4: "Visual Appeal: Floating emojis and animated elements for a fun experience.",
-                footer: "All rights reserved.",
-                languageToggle: "Português"
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const characters = '01';
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ff00';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
             }
+        }
+
+        setInterval(draw, 33);
+
+        // Responsive canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Glitch effect on hover
+        const projects = document.querySelectorAll('.project');
+        projects.forEach(project => {
+            project.addEventListener('mouseover', () => {
+                project.style.transform = `translate(${Math.random() * 5 - 2.5}px, ${Math.random() * 5 - 2.5}px)`;
+                project.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
+            });
+            project.addEventListener('mouseout', () => {
+                project.style.transform = '';
+                project.style.filter = '';
+            });
+        });
+
+        // Terminal functionality
+        const terminalOutput = document.getElementById('terminal-output');
+        const commandInput = document.getElementById('command-input');
+
+        const commands = {
+            help: 'Comandos disponíveis: help, about, skills, contact',
+            about: 'Olá! Sou Daniel M, um desenvolvedor apaixonado por criar experiências web inovadoras e explorar as possibilidades da IA.',
+            skills: 'Minhas habilidades incluem: HTML, CSS, JavaScript, React, Node.js, Python, e muito mais!',
+            contact: 'Você pode me contatar através do GitHub: https://github.com/monteirodv'
         };
 
-        function toggleLanguage() {
-            isPortuguese = !isPortuguese;
-            const lang = isPortuguese ? 'pt' : 'en';
-            updateContent(lang);
-        }
-
-        function updateContent(lang) {
-            document.title = translations[lang].title;
-            document.querySelector('h1').textContent = translations[lang].title;
-            document.querySelector('header p').textContent = translations[lang].welcome;
-            document.querySelectorAll('.project a').forEach(a => a.textContent = translations[lang].accessWebsite);
-            document.querySelector('.project:nth-child(1) p').textContent = translations[lang].darkWeatherDesc;
-            document.querySelectorAll('.project:nth-child(1) .features li').forEach((li, index) => {
-                li.textContent = translations[lang][`darkWeatherFeature${index + 1}`];
-            });
-            document.querySelector('.project:nth-child(2) p').textContent = translations[lang].minematicDesc;
-            document.querySelector('.project:nth-child(2) h3').textContent = translations[lang].features;
-            document.querySelectorAll('.project:nth-child(2) .features li').forEach((li, index) => {
-                li.textContent = translations[lang][`feature${index + 1}`];
-            });
-            document.querySelector('.project:nth-child(3) p').textContent = translations[lang].pongAiDesc;
-            document.querySelectorAll('.project:nth-child(3) .features li').forEach((li, index) => {
-                li.textContent = translations[lang][`pongAiFeature${index + 1}`];
-            });
-            document.querySelector('.project:nth-child(3) .tech-stack h3').textContent = translations[lang].techStack;
-            document.querySelector('.project:nth-child(4) p').textContent = translations[lang].checkersDesc;
-            document.querySelectorAll('.project:nth-child(4) .features li').forEach((li, index) => {
-                li.textContent = translations[lang][`checkersFeature${index + 1}`];
-            });
-            document.querySelector('.project:nth-child(4) h3:nth-of-type(2)').textContent = translations[lang].howToPlay;
-            document.querySelectorAll('.project:nth-child(4) ol li').forEach((li, index) => {
-                li.textContent = translations[lang][`checkersHowTo${index + 1}`];
-            });
-            document.querySelector('.project:nth-child(4) h3:nth-of-type(3)').textContent = translations[lang].aiVisualization;
-            document.querySelector('.project:nth-child(4) ul:nth-of-type(2)').previousElementSibling.textContent = translations[lang].aiVizDesc;
-            document.querySelectorAll('.project:nth-child(4) ul:nth-of-type(2) li').forEach((li, index) => {
-                li.textContent = translations[lang][`aiVizFeature${index + 1}`];
-            });
-            document.querySelector('.project:nth-child(5) p:nth-of-type(3)').textContent = translations[lang].aiTvPicksDesc;
-            document.querySelectorAll('.project:nth-child(5) .features li').forEach((li, index) => {
-                li.textContent = translations[lang][`aiTvPicksFeature${index + 1}`];
-            });
-            document.querySelector('.project:nth-child(5) .tech-stack h3').textContent = translations[lang].techStack;
-            document.querySelector('footer p').textContent = `© 2024 Daniel M. ${translations[lang].footer}`;
-            document.querySelector('.language-toggle').textContent = translations[lang].languageToggle;
-        }
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        commandInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const command = this.value.toLowerCase().trim();
+                let response = commands[command] || `Comando não reconhecido: ${command}. Digite 'help' para ver os comandos disponíveis.`;
+                
+                terminalOutput.innerHTML += `<div>$ ${this.value}</div>`;
+                terminalOutput.innerHTML += `<div>${response}</div>`;
+                
+                this.value = '';
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+            }
         });
 
-        // Intersection Observer for fade-in effect
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.project').forEach(project => {
-            observer.observe(project);
-        });
+        // Typing effect for header
+        const header = document.querySelector('header p');
+        const text = header.textContent;
+        header.textContent = '';
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                header.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        typeWriter();
     </script>
 </body></html>
