@@ -1,12 +1,20 @@
 
-<html><head><base href="https://monteirodv.github.io/"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Daniel M - Desenvolvedor & Entusiasta de IA</title><style>
+<html><head><base href="https://monteirodv.github.io/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel M - Desenvolvedor & Entusiasta de IA</title>
+<style>
+    /* Variáveis CSS */
     :root {
         --bg-color: #000000;
         --text-color: #00ff00;
         --accent-color: #00ff00;
         --secondary-color: #004400;
         --card-bg: #001100;
+        --highlight-color: #00ffff;
     }
+
+    /* Estilos Gerais */
     body, html {
         font-family: 'Courier New', monospace;
         line-height: 1.6;
@@ -16,6 +24,7 @@
         background-color: var(--bg-color);
         overflow-x: hidden;
     }
+
     .container {
         max-width: 1200px;
         margin: 0 auto;
@@ -27,6 +36,8 @@
         z-index: 1;
         background-color: rgba(0, 0, 0, 0.7);
     }
+
+    /* Estilos do Cabeçalho */
     header {
         text-align: center;
         padding: 30px 0;
@@ -34,11 +45,21 @@
         position: relative;
         z-index: 1;
     }
+
     h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         margin-bottom: 10px;
-        text-shadow: 0 0 5px var(--accent-color);
+        text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--highlight-color);
+        animation: pulse 2s infinite;
     }
+
+    @keyframes pulse {
+        0% { text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--highlight-color); }
+        50% { text-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--highlight-color); }
+        100% { text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--highlight-color); }
+    }
+
+    /* Estilos da Grade de Projetos */
     .project-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -48,27 +69,50 @@
         position: relative;
         z-index: 1;
     }
+
     .project {
         background-color: rgba(0, 17, 0, 0.8);
         border: 2px solid var(--accent-color);
-        border-radius: 5px;
+        border-radius: 10px;
         padding: 20px;
-        box-shadow: 0 0 10px var(--accent-color);
+        box-shadow: 0 0 15px var(--accent-color);
         transition: all 0.3s ease;
+        overflow: hidden;
     }
+
     .project:hover {
-        box-shadow: 0 0 20px var(--accent-color);
-        transform: translateY(-5px);
+        box-shadow: 0 0 25px var(--highlight-color);
+        transform: translateY(-5px) scale(1.02);
     }
+
     .project h2 {
         color: var(--accent-color);
         margin-top: 0;
         font-size: 1.8rem;
+        position: relative;
+        display: inline-block;
     }
+
+    .project h2::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0;
+        height: 2px;
+        background-color: var(--highlight-color);
+        transition: width 0.3s ease;
+    }
+
+    .project:hover h2::after {
+        width: 100%;
+    }
+
     .project p {
         margin-bottom: 20px;
         font-size: 1rem;
     }
+
     .project a {
         display: inline-block;
         color: var(--bg-color);
@@ -78,11 +122,37 @@
         padding: 10px 20px;
         border-radius: 5px;
         transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
     }
+
+    .project a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            120deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+        );
+        transition: all 0.5s;
+    }
+
+    .project a:hover::before {
+        left: 100%;
+    }
+
     .project a:hover {
-        background-color: var(--secondary-color);
-        color: var(--accent-color);
+        background-color: var(--highlight-color);
+        color: var(--bg-color);
+        box-shadow: 0 0 10px var(--highlight-color);
     }
+
+    /* Estilos do Rodapé */
     footer {
         text-align: center;
         margin-top: 30px;
@@ -91,37 +161,62 @@
         position: relative;
         z-index: 1;
     }
+
+    /* Estilos das Listas de Recursos */
     .features {
         list-style-type: none;
         padding-left: 0;
     }
+
     .features li {
         margin-bottom: 10px;
         position: relative;
-        padding-left: 20px;
+        padding-left: 25px;
         font-size: 0.9rem;
+        transition: all 0.3s ease;
     }
+
     .features li::before {
         content: '>';
         position: absolute;
         left: 0;
         color: var(--accent-color);
+        transition: all 0.3s ease;
     }
+
+    .features li:hover {
+        transform: translateX(5px);
+    }
+
+    .features li:hover::before {
+        color: var(--highlight-color);
+        left: 5px;
+    }
+
+    /* Estilos da Pilha Tecnológica */
     .tech-stack {
         background-color: rgba(0, 68, 0, 0.6);
         padding: 15px;
         border-radius: 5px;
         margin-top: 20px;
+        transition: all 0.3s ease;
     }
+
+    .tech-stack:hover {
+        background-color: rgba(0, 102, 0, 0.8);
+    }
+
     .tech-stack h3 {
         margin-top: 0;
         color: var(--accent-color);
         font-size: 1.2rem;
     }
+
+    /* Estilos do Terminal */
     #terminal {
         background-color: rgba(0, 17, 0, 0.8);
         border: 2px solid var(--accent-color);
-        border-radius: 5px;
+        border-radius: 10px;
         padding: 20px;
         margin-top: 30px;
         font-family: 'Courier New', monospace;
@@ -129,20 +224,37 @@
         overflow: hidden;
         position: relative;
         z-index: 1;
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
     }
+
+    #terminal::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 25px;
+        background: linear-gradient(to right, var(--accent-color), var(--highlight-color));
+        border-radius: 8px 8px 0 0;
+    }
+
     #terminal-output {
         height: 200px;
         overflow-y: auto;
         margin-bottom: 10px;
+        padding-top: 10px;
     }
+
     #terminal-input {
         display: flex;
         align-items: center;
     }
+
     #terminal-input span {
         color: var(--accent-color);
         margin-right: 5px;
     }
+
     #terminal-input input {
         background-color: transparent;
         border: none;
@@ -152,6 +264,8 @@
         width: 100%;
         outline: none;
     }
+
+    /* Media Queries para Responsividade */
     @media (max-width: 768px) {
         .container {
             padding: 15px;
@@ -159,7 +273,12 @@
         .project {
             padding: 15px;
         }
+        h1 {
+            font-size: 2.5rem;
+        }
     }
+
+    /* Estilos do Fundo Matrix */
     #matrix-bg {
         position: fixed;
         top: 0;
@@ -169,9 +288,12 @@
         z-index: 0;
         opacity: 0.3;
     }
+
+    /* Efeito Glitch */
     .glitch-effect {
         position: relative;
     }
+
     .glitch-effect::before,
     .glitch-effect::after {
         content: attr(data-text);
@@ -182,96 +304,69 @@
         height: 100%;
         background: var(--bg-color);
     }
+
     .glitch-effect::before {
         left: 2px;
         text-shadow: -2px 0 #ff00ff;
         clip: rect(44px, 450px, 56px, 0);
         animation: glitch-anim 5s infinite linear alternate-reverse;
     }
+
     .glitch-effect::after {
         left: -2px;
         text-shadow: -2px 0 #00ffff;
         clip: rect(44px, 450px, 56px, 0);
         animation: glitch-anim 5s infinite linear alternate-reverse;
     }
+
     @keyframes glitch-anim {
-        0% {
-            clip: rect(87px, 9999px, 22px, 0);
-        }
-        5% {
-            clip: rect(37px, 9999px, 80px, 0);
-        }
-        10% {
-            clip: rect(28px, 9999px, 92px, 0);
-        }
-        15% {
-            clip: rect(59px, 9999px, 70px, 0);
-        }
-        20% {
-            clip: rect(31px, 9999px, 83px, 0);
-        }
-        25% {
-            clip: rect(4px, 9999px, 54px, 0);
-        }
-        30% {
-            clip: rect(36px, 9999px, 24px, 0);
-        }
-        35% {
-            clip: rect(36px, 9999px, 100px, 0);
-        }
-        40% {
-            clip: rect(16px, 9999px, 27px, 0);
-        }
-        45% {
-            clip: rect(60px, 9999px, 98px, 0);
-        }
-        50% {
-            clip: rect(68px, 9999px, 65px, 0);
-        }
-        55% {
-            clip: rect(66px, 9999px, 24px, 0);
-        }
-        60% {
-            clip: rect(52px, 9999px, 47px, 0);
-        }
-        65% {
-            clip: rect(56px, 9999px, 72px, 0);
-        }
-        70% {
-            clip: rect(60px, 9999px, 94px, 0);
-        }
-        75% {
-            clip: rect(38px, 9999px, 43px, 0);
-        }
-        80% {
-            clip: rect(9px, 9999px, 37px, 0);
-        }
-        85% {
-            clip: rect(30px, 9999px, 35px, 0);
-        }
-        90% {
-            clip: rect(4px, 9999px, 69px, 0);
-        }
-        95% {
-            clip: rect(9px, 9999px, 67px, 0);
-        }
-        100% {
-            clip: rect(75px, 9999px, 33px, 0);
-        }
+        0% { clip: rect(87px, 9999px, 22px, 0); }
+        5% { clip: rect(37px, 9999px, 80px, 0); }
+        10% { clip: rect(28px, 9999px, 92px, 0); }
+        15% { clip: rect(59px, 9999px, 70px, 0); }
+        20% { clip: rect(31px, 9999px, 83px, 0); }
+        25% { clip: rect(4px, 9999px, 54px, 0); }
+        30% { clip: rect(36px, 9999px, 24px, 0); }
+        35% { clip: rect(36px, 9999px, 100px, 0); }
+        40% { clip: rect(16px, 9999px, 27px, 0); }
+        45% { clip: rect(60px, 9999px, 98px, 0); }
+        50% { clip: rect(68px, 9999px, 65px, 0); }
+        55% { clip: rect(66px, 9999px, 24px, 0); }
+        60% { clip: rect(52px, 9999px, 47px, 0); }
+        65% { clip: rect(56px, 9999px, 72px, 0); }
+        70% { clip: rect(60px, 9999px, 94px, 0); }
+        75% { clip: rect(38px, 9999px, 43px, 0); }
+        80% { clip: rect(9px, 9999px, 37px, 0); }
+        85% { clip: rect(30px, 9999px, 35px, 0); }
+        90% { clip: rect(4px, 9999px, 69px, 0); }
+        95% { clip: rect(9px, 9999px, 67px, 0); }
+        100% { clip: rect(75px, 9999px, 33px, 0); }
     }
+
+    /* Estilos para Tags de Habilidades */
     .skills-container {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
         margin-top: 20px;
     }
+
     .skill-tag {
         background-color: var(--secondary-color);
         color: var(--text-color);
         padding: 5px 10px;
         border-radius: 15px;
         font-size: 0.8rem;
+        transition: all 0.3s ease;
     }
+
+    .skill-tag:hover {
+        background-color: var(--highlight-color);
+        color: var(--bg-color);
+        transform: scale(1.1);
+    }
+
+    /* Estilo do Cursor Piscante */
     #cursor {
         display: inline-block;
         width: 10px;
@@ -279,12 +374,50 @@
         background-color: var(--text-color);
         animation: blink 0.7s infinite;
     }
+
     @keyframes blink {
         0% { opacity: 0; }
         50% { opacity: 1; }
         100% { opacity: 0; }
     }
-</style></head><body>
+
+    /* Adicionando animação de fade-in para os projetos */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .project {
+        animation: fadeIn 0.5s ease-out forwards;
+        opacity: 0;
+    }
+
+    .project:nth-child(1) { animation-delay: 0.1s; }
+    .project:nth-child(2) { animation-delay: 0.2s; }
+    .project:nth-child(3) { animation-delay: 0.3s; }
+    .project:nth-child(4) { animation-delay: 0.4s; }
+    .project:nth-child(5) { animation-delay: 0.5s; }
+
+    /* Melhorando a scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--bg-color);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--highlight-color);
+    }
+</style>
+</head>
+<body>
     <canvas id="matrix-bg"></canvas>
     <div class="container">
         <header>
@@ -293,6 +426,7 @@
         </header>
 
         <main class="project-grid">
+            <!-- Projeto: Dark Weather Web -->
             <div class="project">
                 <h2>Dark Weather Web</h2>
                 <p>Aplicativo de previsão do tempo com interface elegante e toques de humor usando IA.</p>
@@ -317,6 +451,7 @@
                 <a href="https://monteirodv.github.io/DarkWeatherWeb/" target="_blank">Acessar Site</a>
             </div>
 
+            <!-- Projeto: MineMatic -->
             <div class="project">
                 <h2>MineMatic</h2>
                 <p>Jogo idle de aventura de mineração responsivo e envolvente.</p>
@@ -339,6 +474,7 @@
                 <a href="https://monteirodv.github.io/MineMatic/" target="_blank">Jogar Agora</a>
             </div>
 
+            <!-- Projeto: Pong AI -->
             <div class="project">
                 <h2>Pong AI</h2>
                 <p>Versão aprimorada do clássico Pong com um oponente de IA que aprende.</p>
@@ -360,6 +496,7 @@
                 <a href="https://monteirodv.github.io/PongAI/" target="_blank">Jogar vs IA</a>
             </div>
 
+            <!-- Projeto: MiniMax Alpha Checkers -->
             <div class="project">
                 <h2>MiniMax Alpha Checkers</h2>
                 <p>Jogo de Damas com IA avançada usando algoritmos Minimax e poda Alfa-beta.</p>
@@ -381,6 +518,7 @@
                 <a href="https://monteirodv.github.io/MiniMaxAlphaCheckers/" target="_blank">Desafiar a IA</a>
             </div>
 
+            <!-- Projeto: AI TV Picks -->
             <div class="project">
                 <h2>AI TV Picks</h2>
                 <p>Aplicativo de recomendações de filmes e séries alimentado por IA.</p>
@@ -418,7 +556,7 @@
     </div>
 
     <script>
-        // Matrix rain effect
+        // Efeito de chuva Matrix aprimorado
         const canvas = document.getElementById('matrix-bg');
         const ctx = canvas.getContext('2d');
 
@@ -454,31 +592,33 @@
 
         setInterval(draw, 33);
 
-        // Responsive canvas
+        // Canvas responsivo
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
 
-        // Glitch effect on hover
+        // Efeito glitch no hover aprimorado
         const projects = document.querySelectorAll('.project');
         projects.forEach(project => {
             project.addEventListener('mouseover', () => {
-                project.style.transform = `translate(${Math.random() * 5 - 2.5}px, ${Math.random() * 5 - 2.5}px)`;
+                project.style.transform = `translate(${Math.random() * 5 - 2.5}px, ${Math.random() * 5 - 2.5}px) scale(1.05)`;
                 project.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
+                project.style.boxShadow = `0 0 20px ${Math.random() > 0.5 ? 'var(--accent-color)' : 'var(--highlight-color)'}`;
             });
             project.addEventListener('mouseout', () => {
                 project.style.transform = '';
                 project.style.filter = '';
+                project.style.boxShadow = '';
             });
         });
 
-        // Terminal functionality
+        // Funcionalidade do terminal aprimorada
         const terminalOutput = document.getElementById('terminal-output');
         const commandInput = document.getElementById('command-input');
 
         const commands = {
-            help: 'Comandos disponíveis: help, about, skills, contact, projects',
+            help: 'Comandos disponíveis: help, about, skills, contact, projects, clear',
             about: 'Olá! Sou Daniel M, um desenvolvedor apaixonado por criar experiências web inovadoras e explorar as possibilidades da IA.',
             skills: 'Minhas habilidades incluem: HTML, CSS, JavaScript, React, Node.js, Python, e APIs de IA.',
             contact: 'Você pode me contatar através do GitHub: https://github.com/monteirodv',
@@ -487,23 +627,29 @@
             minematic: 'MineMatic: Jogo idle de aventura de mineração responsivo e envolvente.',
             'pong ai': 'Pong AI: Versão aprimorada do clássico Pong com um oponente de IA que aprende.',
             'minimax alpha checkers': 'MiniMax Alpha Checkers: Jogo de Damas com IA avançada usando algoritmos Minimax e poda Alfa-beta.',
-            'ai tv picks': 'AI TV Picks: Aplicativo de recomendações de filmes e séries alimentado por IA.'
+            'ai tv picks': 'AI TV Picks: Aplicativo de recomendações de filmes e séries alimentado por IA.',
+            clear: 'Limpa o terminal'
         };
 
         commandInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 const command = this.value.toLowerCase().trim();
-                let response = commands[command] || `Comando não reconhecido: ${command}. Digite 'help' para ver os comandos disponíveis.`;
-                
-                terminalOutput.innerHTML += `<div>$ ${this.value}</div>`;
-                terminalOutput.innerHTML += `<div>${response}</div>`;
+                let response = '';
+
+                if (command === 'clear') {
+                    terminalOutput.innerHTML = '';
+                } else {
+                    response = commands[command] || `Comando não reconhecido: ${command}. Digite 'help' para ver os comandos disponíveis.`;
+                    terminalOutput.innerHTML += `<div>$ ${this.value}</div>`;
+                    terminalOutput.innerHTML += `<div>${response}</div>`;
+                }
                 
                 this.value = '';
                 terminalOutput.scrollTop = terminalOutput.scrollHeight;
             }
         });
 
-        // Typing effect for header
+        // Efeito de digitação para o cabeçalho aprimorado
         const typingText = document.getElementById('typing-text');
         const cursor = document.getElementById('cursor');
         const texts = [
@@ -513,34 +659,34 @@
         ];
         let textIndex = 0;
         let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
 
         function typeWriter() {
-            if (charIndex === 0) {
-                typingText.textContent = '> ';
-            }
-            if (charIndex < texts[textIndex].length) {
-                typingText.textContent += texts[textIndex].charAt(charIndex);
+            const currentText = texts[textIndex];
+            
+            if (!isDeleting && charIndex < currentText.length) {
+                typingText.textContent = '> ' + currentText.substring(0, charIndex + 1);
                 charIndex++;
-                setTimeout(typeWriter, 50);
-            } else {
-                setTimeout(eraseText, 2000);
-            }
-        }
-
-        function eraseText() {
-            if (charIndex > 0) {
-                typingText.textContent = '> ' + texts[textIndex].substring(0, charIndex - 1);
+                typingSpeed = 100 - Math.random() * 50;
+            } else if (isDeleting && charIndex > 0) {
+                typingText.textContent = '> ' + currentText.substring(0, charIndex - 1);
                 charIndex--;
-                setTimeout(eraseText, 30);
+                typingSpeed = 50 - Math.random() * 25;
             } else {
-                textIndex = (textIndex + 1) % texts.length;
-                setTimeout(typeWriter, 500);
+                isDeleting = !isDeleting;
+                if (!isDeleting) {
+                    textIndex = (textIndex + 1) % texts.length;
+                }
+                typingSpeed = isDeleting ? 1000 : 500;
             }
+
+            setTimeout(typeWriter, typingSpeed);
         }
 
         typeWriter();
 
-        // Smooth scrolling for anchor links
+        // Rolagem suave para links âncora
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -548,6 +694,44 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Adicionar efeito de parallax ao scroll
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            document.body.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+        });
+
+        // Adicionar efeito de hover nas skill tags
+        const skillTags = document.querySelectorAll('.skill-tag');
+        skillTags.forEach(tag => {
+            tag.addEventListener('mouseover', () => {
+                tag.style.transform = 'scale(1.1) rotate(5deg)';
+            });
+            tag.addEventListener('mouseout', () => {
+                tag.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Adicionar efeito de fade-in aos projetos quando entram na viewport
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        projects.forEach(project => {
+            observer.observe(project);
         });
     </script>
 </body></html>
