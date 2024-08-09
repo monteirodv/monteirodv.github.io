@@ -23,11 +23,16 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        position: relative;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.7);
     }
     header {
         text-align: center;
         padding: 30px 0;
         border-bottom: 2px solid var(--accent-color);
+        position: relative;
+        z-index: 1;
     }
     h1 {
         font-size: 2.5rem;
@@ -40,9 +45,11 @@
         gap: 30px;
         margin-top: 30px;
         flex-grow: 1;
+        position: relative;
+        z-index: 1;
     }
     .project {
-        background-color: var(--card-bg);
+        background-color: rgba(0, 17, 0, 0.8);
         border: 2px solid var(--accent-color);
         border-radius: 5px;
         padding: 20px;
@@ -81,6 +88,8 @@
         margin-top: 30px;
         padding: 20px;
         border-top: 2px solid var(--accent-color);
+        position: relative;
+        z-index: 1;
     }
     .features {
         list-style-type: none;
@@ -99,7 +108,7 @@
         color: var(--accent-color);
     }
     .tech-stack {
-        background-color: var(--secondary-color);
+        background-color: rgba(0, 68, 0, 0.6);
         padding: 15px;
         border-radius: 5px;
         margin-top: 20px;
@@ -110,7 +119,7 @@
         font-size: 1.2rem;
     }
     #terminal {
-        background-color: var(--card-bg);
+        background-color: rgba(0, 17, 0, 0.8);
         border: 2px solid var(--accent-color);
         border-radius: 5px;
         padding: 20px;
@@ -118,6 +127,8 @@
         font-family: 'Courier New', monospace;
         color: var(--text-color);
         overflow: hidden;
+        position: relative;
+        z-index: 1;
     }
     #terminal-output {
         height: 200px;
@@ -155,14 +166,130 @@
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: -1;
+        z-index: 0;
+        opacity: 0.3;
+    }
+    .glitch-effect {
+        position: relative;
+    }
+    .glitch-effect::before,
+    .glitch-effect::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-color);
+    }
+    .glitch-effect::before {
+        left: 2px;
+        text-shadow: -2px 0 #ff00ff;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim 5s infinite linear alternate-reverse;
+    }
+    .glitch-effect::after {
+        left: -2px;
+        text-shadow: -2px 0 #00ffff;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim 5s infinite linear alternate-reverse;
+    }
+    @keyframes glitch-anim {
+        0% {
+            clip: rect(87px, 9999px, 22px, 0);
+        }
+        5% {
+            clip: rect(37px, 9999px, 80px, 0);
+        }
+        10% {
+            clip: rect(28px, 9999px, 92px, 0);
+        }
+        15% {
+            clip: rect(59px, 9999px, 70px, 0);
+        }
+        20% {
+            clip: rect(31px, 9999px, 83px, 0);
+        }
+        25% {
+            clip: rect(4px, 9999px, 54px, 0);
+        }
+        30% {
+            clip: rect(36px, 9999px, 24px, 0);
+        }
+        35% {
+            clip: rect(36px, 9999px, 100px, 0);
+        }
+        40% {
+            clip: rect(16px, 9999px, 27px, 0);
+        }
+        45% {
+            clip: rect(60px, 9999px, 98px, 0);
+        }
+        50% {
+            clip: rect(68px, 9999px, 65px, 0);
+        }
+        55% {
+            clip: rect(66px, 9999px, 24px, 0);
+        }
+        60% {
+            clip: rect(52px, 9999px, 47px, 0);
+        }
+        65% {
+            clip: rect(56px, 9999px, 72px, 0);
+        }
+        70% {
+            clip: rect(60px, 9999px, 94px, 0);
+        }
+        75% {
+            clip: rect(38px, 9999px, 43px, 0);
+        }
+        80% {
+            clip: rect(9px, 9999px, 37px, 0);
+        }
+        85% {
+            clip: rect(30px, 9999px, 35px, 0);
+        }
+        90% {
+            clip: rect(4px, 9999px, 69px, 0);
+        }
+        95% {
+            clip: rect(9px, 9999px, 67px, 0);
+        }
+        100% {
+            clip: rect(75px, 9999px, 33px, 0);
+        }
+    }
+    .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    .skill-tag {
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+    #cursor {
+        display: inline-block;
+        width: 10px;
+        height: 20px;
+        background-color: var(--text-color);
+        animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+        0% { opacity: 0; }
+        50% { opacity: 1; }
+        100% { opacity: 0; }
     }
 </style></head><body>
     <canvas id="matrix-bg"></canvas>
     <div class="container">
         <header>
-            <h1>Daniel M</h1>
-            <p>Desenvolvedor | Entusiasta de IA</p>
+            <h1 class="glitch-effect" data-text="Daniel M">Daniel M</h1>
+            <p id="typing-text"></p><span id="cursor"></span>
         </header>
 
         <main class="project-grid">
@@ -179,7 +306,13 @@
                 </ul>
                 <div class="tech-stack">
                     <h3>Tecnologias:</h3>
-                    <p>HTML, CSS, JavaScript, APIs de previsão do tempo, Gemini AI</p>
+                    <div class="skills-container">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Weather API</span>
+                        <span class="skill-tag">Gemini AI</span>
+                    </div>
                 </div>
                 <a href="https://monteirodv.github.io/DarkWeatherWeb/" target="_blank">Acessar Site</a>
             </div>
@@ -196,7 +329,12 @@
                 </ul>
                 <div class="tech-stack">
                     <h3>Tecnologias:</h3>
-                    <p>HTML5, CSS3, JavaScript, Local Storage</p>
+                    <div class="skills-container">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Local Storage</span>
+                    </div>
                 </div>
                 <a href="https://monteirodv.github.io/MineMatic/" target="_blank">Jogar Agora</a>
             </div>
@@ -212,7 +350,12 @@
                 </ul>
                 <div class="tech-stack">
                     <h3>Tecnologias:</h3>
-                    <p>HTML5 Canvas, JavaScript, Chart.js, CSS responsivo</p>
+                    <div class="skills-container">
+                        <span class="skill-tag">HTML5 Canvas</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Chart.js</span>
+                        <span class="skill-tag">CSS</span>
+                    </div>
                 </div>
                 <a href="https://monteirodv.github.io/PongAI/" target="_blank">Jogar vs IA</a>
             </div>
@@ -228,7 +371,12 @@
                 </ul>
                 <div class="tech-stack">
                     <h3>Tecnologias:</h3>
-                    <p>HTML5, CSS3, JavaScript (lógica do jogo e implementação de IA)</p>
+                    <div class="skills-container">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">AI Algorithms</span>
+                    </div>
                 </div>
                 <a href="https://monteirodv.github.io/MiniMaxAlphaCheckers/" target="_blank">Desafiar a IA</a>
             </div>
@@ -244,7 +392,13 @@
                 </ul>
                 <div class="tech-stack">
                     <h3>Tecnologias:</h3>
-                    <p>HTML, Tailwind CSS, JavaScript, Google Gemini API, OMDb API</p>
+                    <div class="skills-container">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Google Gemini API</span>
+                        <span class="skill-tag">OMDb API</span>
+                    </div>
                 </div>
                 <a href="https://monteirodv.github.io/AiTVPicks/" target="_blank">Descobrir Recomendações</a>
             </div>
@@ -324,10 +478,16 @@
         const commandInput = document.getElementById('command-input');
 
         const commands = {
-            help: 'Comandos disponíveis: help, about, skills, contact',
+            help: 'Comandos disponíveis: help, about, skills, contact, projects',
             about: 'Olá! Sou Daniel M, um desenvolvedor apaixonado por criar experiências web inovadoras e explorar as possibilidades da IA.',
-            skills: 'Minhas habilidades incluem: HTML, CSS, JavaScript, React, Node.js, Python, e muito mais!',
-            contact: 'Você pode me contatar através do GitHub: https://github.com/monteirodv'
+            skills: 'Minhas habilidades incluem: HTML, CSS, JavaScript, React, Node.js, Python, e APIs de IA.',
+            contact: 'Você pode me contatar através do GitHub: https://github.com/monteirodv',
+            projects: 'Meus projetos incluem: Dark Weather Web, MineMatic, Pong AI, MiniMax Alpha Checkers, e AI TV Picks. Use o comando específico do projeto para mais informações.',
+            'dark weather web': 'Dark Weather Web: Aplicativo de previsão do tempo com interface elegante e toques de humor usando IA.',
+            minematic: 'MineMatic: Jogo idle de aventura de mineração responsivo e envolvente.',
+            'pong ai': 'Pong AI: Versão aprimorada do clássico Pong com um oponente de IA que aprende.',
+            'minimax alpha checkers': 'MiniMax Alpha Checkers: Jogo de Damas com IA avançada usando algoritmos Minimax e poda Alfa-beta.',
+            'ai tv picks': 'AI TV Picks: Aplicativo de recomendações de filmes e séries alimentado por IA.'
         };
 
         commandInput.addEventListener('keypress', function(e) {
@@ -344,17 +504,50 @@
         });
 
         // Typing effect for header
-        const header = document.querySelector('header p');
-        const text = header.textContent;
-        header.textContent = '';
-        let i = 0;
+        const typingText = document.getElementById('typing-text');
+        const cursor = document.getElementById('cursor');
+        const texts = [
+            'Desenvolvedor Full Stack',
+            'Entusiasta de IA',
+            'Criador de Experiências Interativas'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+
         function typeWriter() {
-            if (i < text.length) {
-                header.textContent += text.charAt(i);
-                i++;
+            if (charIndex === 0) {
+                typingText.textContent = '> ';
+            }
+            if (charIndex < texts[textIndex].length) {
+                typingText.textContent += texts[textIndex].charAt(charIndex);
+                charIndex++;
                 setTimeout(typeWriter, 50);
+            } else {
+                setTimeout(eraseText, 2000);
             }
         }
+
+        function eraseText() {
+            if (charIndex > 0) {
+                typingText.textContent = '> ' + texts[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseText, 30);
+            } else {
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(typeWriter, 500);
+            }
+        }
+
         typeWriter();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body></html>
